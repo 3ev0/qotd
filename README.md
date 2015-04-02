@@ -4,6 +4,8 @@ Requirements:
 * Python3
 * webserver + cgi (nginx + uwsgi)
 
+Setup virtualenv for python
+virtualenv --python
 
 USAGE
 =====

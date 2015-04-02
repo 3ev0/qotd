@@ -10,6 +10,6 @@ if "QUOTDWEB_CONFIG" in os.environ:
     app.config.from_envvar('QUOTDWEB_CONFIG')
 db = SQLAlchemy(app)
 
-from qotdweb import models, views
+from qotdweb import views
 
 

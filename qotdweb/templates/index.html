@@ -1,0 +1,15 @@
+<html>
+    <head>
+        <title>Quote Of The Day! - By Ivo.cool</title>
+    </head>
+    <body>
+        {% if quote %}
+        <h1>This is your Quote of the Day!</h1>
+        <p><pre>{{ quote.text }}</pre></p>
+        <p>{{ quote.author }}</p>
+        {% else %}
+        <p> Sorry :( We are out of quotes!</p>
+        {% endif %}
+    </body>
+
+</html>

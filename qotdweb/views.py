@@ -1,15 +1,25 @@
 __author__ = 'ivo'
+import datetime
+import logging
 
-from flask import Flask
+import flask
 
-app = Flask(__name__)
+from qotdweb import db, app
+from qotdweb.models import Quote
 
 @app.route("/")
 def show_quote():
-    return "quote here"
+    start_of_day = datetime.datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
+    quote = Quote.query.filter(Quote.lastused >= start_of_day).first()
+    if not quote: # No quote of the day yet!
+        quote = Quote.query.order_by(Quote.digest).first()
+        if quote:
+            quote.lastused = datetime.datetime.now()
 
-if __name__ == "__main__":
-    app.run()
+    htmlstr = flask.render_template("index.html", quote=quote.__dict__ if quote else None)
+    db.session.commit()
+    return htmlstr
+
 
 
 

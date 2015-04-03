@@ -13,7 +13,12 @@ Activate your virtualenv
 Install required packages
 > pip install -r requirements.txt
 
-For nginx + uwsgi:
+For nginx + uwsgi
+-----------------
+In your virtualenv:
+Make sure uwsgi python3 plugin is installed:
+> pip3 install uwsgi 
+
 Copy the uwsgi upstart template to /etc/init and adjust
 
 Copy the nginx template to /etc/nginx and adjust

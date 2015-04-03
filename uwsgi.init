@@ -1,0 +1,7 @@
+description "uwsgi instance for qotd"
+start on runlevel [2345]
+stop on runlevel [06]
+
+respawn
+
+exec uwsgi -H ~/.virtualenv/qotd --die-on-term -s /tmp/uwsgi.sock -w qotdweb:app --stats 127.0.0.1:9191

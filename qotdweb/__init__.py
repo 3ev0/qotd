@@ -6,8 +6,8 @@ from flask.ext.sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 app.config.from_object('qotdweb.default_config')
 
-if "QUOTDWEB_CONFIG" in os.environ:
-    app.config.from_envvar('QUOTDWEB_CONFIG')
+if "QOTD_CONFIG" in os.environ:
+    app.config.from_envvar('QOTD_CONFIG')
 db = SQLAlchemy(app)
 
 from qotdweb import views

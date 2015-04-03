@@ -12,10 +12,9 @@ def parse_args():
 if __name__ == "__main__":
     args = parse_args()
     if args.createdb:
-        if input("Are you sure you want to drop the current database?? (Type 'YES' to drop)") == "YES":
-            db.drop_all()
-            db.create_all()
-        else:
-            pass
+        db.drop_all()
+        db.create_all()
+    else:
+        pass
     app.run(debug=True)
 

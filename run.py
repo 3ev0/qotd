@@ -1,8 +1,8 @@
 __author__ = 'ivo'
 
 import argparse
+import logging
 
-from qotdweb import db, app
 
 def parse_args():
     argparser = argparse.ArgumentParser(description="Commandline util for qotdweb")
@@ -11,9 +11,16 @@ def parse_args():
 
 if __name__ == "__main__":
     args = parse_args()
+    log = logging.getLogger("qotdweb")
+    log.setLevel(logging.DEBUG)
+    ch = logging.StreamHandler()
+    ch.setLevel(logging.DEBUG)
+    log.addHandler(ch)
+    from qotdweb import db, app
     if args.createdb:
         db.drop_all()
         db.create_all()
+        log.info("Database recreated")
     else:
         pass
     app.run(debug=True)

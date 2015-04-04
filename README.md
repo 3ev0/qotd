@@ -26,12 +26,13 @@ In your virtualenv:
 Make sure uwsgi python3 plugin is installed:
 > pip3 install uwsgi 
 
-Configure uwsgi for qotd. See uwsgi.ini
+Configure uwsgi for qotd. 
+You may use the uwsgi.ini file
 
 Configure nginx for uwsgi-qotd. 
 You may use the included nginx file.
-> sudo ln -s qotd_nginx.conf /etc/nginx/sites-enabled/qotd
-
+> sudo ln -s /path/to/qotd_nginx.conf /path/to/nginx_sites-enabled/qotd
+> sudo service nginx restart
 
 USAGE
 =====

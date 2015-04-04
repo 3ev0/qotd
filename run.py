@@ -12,10 +12,6 @@ def parse_args():
 if __name__ == "__main__":
     args = parse_args()
     log = logging.getLogger("qotdweb")
-    log.setLevel(logging.DEBUG)
-    ch = logging.StreamHandler()
-    ch.setLevel(logging.DEBUG)
-    log.addHandler(ch)
     from qotdweb import db, app
     if args.createdb:
         db.drop_all()

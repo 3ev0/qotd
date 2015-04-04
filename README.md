@@ -5,13 +5,20 @@ Requirements:
 * webserver + cgi (nginx + uwsgi)
 
 Setup virtualenv for python
-> virtualenv -p /usr/bin/python3 ~/.virtualenvs/qotd
+> virtualenv -p /usr/bin/python3 qotd/venv
 
 Activate your virtualenv
-> . ~/.virtualenvs/qotd/bin/activate
+> source qotd/venv/bin/activate
 
-Install required packages
-> pip install -r requirements.txt
+Install qotd and required packages
+> pip install -r requirements.txt .
+
+Configuration
+-------------
+Qotd loads config settings from qotdweb.default_config. 
+If you like to adjust, create your own flask python config file and include by setting env var. 
+Described here: 
+http://flask.pocoo.org/docs/0.10/config/#builtin-configuration-values
 
 For nginx + uwsgi
 -----------------
@@ -19,9 +26,11 @@ In your virtualenv:
 Make sure uwsgi python3 plugin is installed:
 > pip3 install uwsgi 
 
-Copy the uwsgi upstart template to /etc/init and adjust
+Configure uwsgi for qotd. See uwsgi.ini
 
-Copy the nginx template to /etc/nginx and adjust
+Configure nginx for uwsgi-qotd. 
+You may use the included nginx file.
+> sudo ln -s qotd_nginx.conf /etc/nginx/sites-enabled/qotd
 
 
 USAGE
@@ -30,5 +39,7 @@ For debug mode:
 python run.py
 
 Else:
+Start uwsgi from virtualenv
+
 Run wsgi server to talk to Flask wsgi interface of the qotdweb app.
 

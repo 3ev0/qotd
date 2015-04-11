@@ -7,7 +7,7 @@
 <body>
     <form method="POST" action="add">
         {{ form.hidden_tag() }}
-        {{ form.quote.label }} {{ form.quote }}
+        {{ form.text.label }} {{ form.text }}
         {{ form.author.label }} {{ form.author(len=20) }}
         <input type="submit" value="Done">
     </form>

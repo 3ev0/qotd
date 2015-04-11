@@ -4,8 +4,9 @@ import logging
 
 import flask
 
-from qotdweb import db, app
+from qotdweb import db, app, forms
 from qotdweb.models import Quote
+
 
 @app.route("/")
 def show_quote():
@@ -19,6 +20,16 @@ def show_quote():
     htmlstr = flask.render_template("index.html", quote=quote.__dict__ if quote else None)
     db.session.commit()
     return htmlstr
+
+@app.route("/add", methods=("GET", "POST"))
+def add_quote():
+    form = forms.AddQuoteForm()
+    if form.validate_on_submit():
+        flask.flash("Congratz! Your quote is now past of history!", "info")
+        return flask.redirect(flask.url_for("add_quote"))
+    elif form.is_submitted():
+        flask.flash("Err...does not compute!", "error")
+    return flask.render_template("addquote.html", form=form)
 
 
 

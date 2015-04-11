@@ -16,9 +16,10 @@ Install qotd and required packages
 Configuration
 -------------
 Qotd loads config settings from qotdweb.default_config. 
-If you like to adjust, create your own flask python config file and include by setting env var. 
+If you like to adjust, create your own flask python config file. Include that config file by setting the env variable 
+pointing to that file. The environment variable should be named QOTD_CONFIG. 
 Described here: 
-http://flask.pocoo.org/docs/0.10/config/#builtin-configuration-values
+http://flask.pocoo.org/docs/0.10/config/
 
 For nginx + uwsgi
 -----------------

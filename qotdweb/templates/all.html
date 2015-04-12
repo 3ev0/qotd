@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block content%}
+<div class="container">
+        <h1>You must like quotes</h1>
+        {% for quote in quotes %}
+        <blockquote>{{ quote.text|nl2br }}
+        <small>{{ quote.author }}</small>
+        </blockquote>
+        {% endfor %}
+</div>
+{% endblock %}

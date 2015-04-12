@@ -1,15 +1,16 @@
-<html>
-    <head>
-        <title>Quote Of The Day! - By Ivo.cool</title>
-    </head>
-    <body>
+{% extends "layout.html" %}
+{% block content %}
+    <div class="container">
+        <div class="jumbotron">
         {% if quote %}
-        <h1>This is your Quote of the Day!</h1>
-        <p><pre>{{ quote.text }}</pre></p>
-        <p>{{ quote.author }}</p>
+        <h1>The Daily Quote!</h1>
+        <blockquote>
+          <p>{{ quote.text|nl2br }}</p>
+          <small>{{ quote.author }}</small>
+        </blockquote>
         {% else %}
         <p> Sorry :( We are out of quotes!</p>
         {% endif %}
-    </body>
-
-</html>
+        </div>
+    </div>
+{% endblock %}

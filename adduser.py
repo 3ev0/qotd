@@ -1,3 +1,6 @@
+"""
+Script for adding a user to the qotd database.
+"""
 __author__ = 'ivo'
 
 import sys

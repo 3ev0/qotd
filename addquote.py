@@ -1,3 +1,7 @@
+"""
+Script for adding a quote from stdin to the qotd database.
+"""
+
 __author__ = 'ivo'
 
 import sys

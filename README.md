@@ -37,8 +37,8 @@ Configure uwsgi for qotd.
 You may use the uwsgi.ini file
 
 Configure nginx for uwsgi-qotd. 
-You may use the included nginx file.
-> sudo ln -s /path/to/qotd_nginx.conf /path/to/nginx_sites-enabled/qotd
+You may use the included nginx file as a basic template. If so, copy it to the nginx config dir and edit it. 
+> sudo ln -s /path/to/sites-available/qotd.conf /path/to/nginx_sites-enabled/qotd
 > sudo service nginx restart
 
 USAGE

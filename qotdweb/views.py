@@ -21,7 +21,7 @@ def show_quote():
         quote = models.Quote.query.order_by(models.Quote.digest).first()
         if quote:
             quote.lastused = datetime.datetime.now()
-
+            quote.save()
     htmlstr = flask.render_template("index.html", quote=quote.__dict__ if quote else None)
     db.session.commit()
     return htmlstr

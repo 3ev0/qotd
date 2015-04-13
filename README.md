@@ -13,6 +13,12 @@ Activate your virtualenv
 Install qotd and required packages
 > pip install -r requirements.txt .
 
+Create the database. In active virtualenv:
+> python createdb.py 
+
+chmod and chown the database file for the user that the application/web server is running as. 
+
+
 Configuration
 -------------
 Qotd loads config settings from qotdweb.default_config. 

@@ -4,7 +4,12 @@
         <h1>You must like quotes</h1>
         {% for quote in quotes %}
         <blockquote>{{ quote.text|nl2br }}
-        <small>{{ quote.author }}</small>
+        <small>{% if quote.author %}
+            {{ quote.author }}
+                {% else %}
+            unknown
+                {% endif %}
+        </small>
         </blockquote>
         {% endfor %}
 </div>

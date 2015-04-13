@@ -6,7 +6,13 @@
         <h1>The Daily Quote!</h1>
         <blockquote>
           <p>{{ quote.text|nl2br }}</p>
-          <small>{{ quote.author }}</small>
+          <small>
+              {% if quote.author %}
+              {{ quote.author }}
+              {% else %}
+              unknown
+              {% endif %}
+          </small>
         </blockquote>
         {% else %}
         <p> Sorry :( We are out of quotes!</p>

@@ -20,7 +20,7 @@ def show_quote():
     start_of_day = datetime.datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
     quote = models.Quote.query.filter(models.Quote.lastused >= start_of_day).first()
     if not quote: # No quote of the day yet!
-        quote = models.Quote.query.filter(models.Quote.lastused < start_of_day).order_by(func.random()).first()
+        quote = models.Quote.query.order_by(func.random()).first()
         if quote:
             quote.lastused = datetime.datetime.now()
             quote.save()

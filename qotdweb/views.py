@@ -3,6 +3,8 @@ import datetime
 import logging
 log = logging.getLogger(__name__)
 
+import sqlalchemy
+from sqlalchemy.sql.expression import func
 import flask
 from flask.ext import login
 
@@ -17,8 +19,9 @@ def load_user(id):
 def show_quote():
     start_of_day = datetime.datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
     quote = models.Quote.query.filter(models.Quote.lastused >= start_of_day).first()
+    quote = None
     if not quote: # No quote of the day yet!
-        quote = models.Quote.query.order_by(models.Quote.digest).first()
+        quote = models.Quote.query.filter(models.Quote.lastused < start_of_day).order_by(func.random()).first()
         if quote:
             quote.lastused = datetime.datetime.now()
             quote.save()
